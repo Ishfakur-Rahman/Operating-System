@@ -83,7 +83,6 @@ int partitions_bt(int start, int ends){
             prcs[i]=prcs[j];
             prcs[j]=temp;
         }
-
     }
 
     temp=prcs[i+1];
@@ -96,11 +95,9 @@ int partitions_bt(int start, int ends){
 void quickSort_bt(int start, int ends){
 
     if(start<ends){
-
         int mid = partitions_bt(start,ends);
         quickSort_bt(start,mid-1);
         quickSort_bt(mid+1,ends);
-
     }
 
     return;
@@ -137,8 +134,6 @@ void sjf_preemption(){
             }
         }
     }
-
-
 }
 
 main(){
