@@ -45,17 +45,19 @@ void roundrobin(){
                 break;
             }
         }
-        prcs[i].completion_time=cputime+1;
-        prcs[i].burst_time-=1;
-
         if(prcs[i].burst_time>=time_quantum){
             cputime+=time_quantum;
             prcs[i].waiting_time=cputime-prcs[i].burst_time;
+            prcs[i].burst_time-=time_quantum;
+            prcs[i].completion_time=cputime;
             j++;
         }
         else{
             cputime+=prcs[i].burst_time;
             prcs[i].waiting_time=cputime-prcs[i].burst_time;
+            prcs[i].burst_time=0;
+            prcs[i].completion_time=cputime;
+
             j++;
         }
         if(j==5){
@@ -81,4 +83,5 @@ main(){
 
 return 0;
 }
+
 
